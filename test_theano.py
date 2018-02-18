@@ -11,11 +11,21 @@ f = function([], tensor.exp(x))
 print(f.maker.fgraph.toposort())
 t0 = time.time()
 for i in range(iters):
+<<<<<<< HEAD
         r = f()
 t1 = time.time()
 print("Looping %d times took %f seconds" % (iters, t1 - t0))
 print("Result is %s" % (r,))
 if numpy.any([isinstance(x.op, tensor.Elemwise) and ('Gpu' not in type(x.op).__name__) for x in f.maker.fgraph.toposort()]):
+=======
+    r = f()
+t1 = time.time()
+print("Looping %d times took %f seconds" % (iters, t1 - t0))
+print("Result is %s" % (r,))
+if numpy.any([isinstance(x.op, tensor.Elemwise) and
+              ('Gpu' not in type(x.op).__name__)
+              for x in f.maker.fgraph.toposort()]):
+>>>>>>> e1580aa7c270905c158d9003f14f6b579becff48
     print('Used the cpu')
 else:
     print('Used the gpu')

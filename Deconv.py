@@ -109,12 +109,13 @@ BATCH_SIZE = 10
 N_EPOCHS = 5
 batch_idx = 0
 epoch = 0
+input_batch = np.random.randint(low=10, high=20, size=(10, 3, 224, 224))
+target_batch = np.random.randint(low=10, high=20, size=(10, 21, 224, 224))  ###
+
 print("start training")
-while epoch < N_EPOCHS:
+for epoch in range(N_EPOCHS):
     #print(net_output)
     loss = 0
-    input_batch = np.random.randint(low=10, high=20, size=(10, 3, 224, 224))
-    output_batch = np.random.randint(low=10, high=20, size=(10, 21, 224, 224))  ###
     loss += train_fn(input_batch, target_batch)
     print("Epoch %d: Loss %g" % (epoch + 1, loss))
 
